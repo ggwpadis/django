@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Task Manager</h1>
+
+    <a href="{% url 'crud:task_create' %}">Create task</a>
+
+    {% for task in tasks %}
+        <hr>
+        <h2>
+            <a href="{% url 'crud:task_detail' task.pk %}">
+                {{ task.title }}
+            </a>
+        </h2>
+
+        <p>{{ task.description }}</p>
+        <p>
+            Status:
+            {% if task.completed %}Completed{% else %}In progress{% endif %}
+        </p>
+
+        <a href="{% url 'crud:task_update' task.pk %}">Edit</a>
+        <a href="{% url 'crud:task_delete' task.pk %}">Delete</a>
+    {% empty %}
+        <p>No tasks yet.</p>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ task.title }}</title>
+</head>
+<body>
+    <h1>{{ task.title }}</h1>
+    <p>{{ task.description }}</p>
+    <p>Completed: {{ task.completed }}</p>
+
+    <a href="{% url 'crud:task_update' task.pk %}">Edit</a>
+    <a href="{% url 'crud:task_delete' task.pk %}">Delete</a>
+    <a href="{% url 'crud:task_list' %}">Back to tasks</a>
+</body>
+</html>
